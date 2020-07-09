@@ -15,14 +15,16 @@ def RBFKernel(X1, X2, sigma):
     return np.exp(-0.5*pdist.sum(-1)/sigma**2)
 
 def log_marginal_likelihood(X, y, sigma, beta):
-    Sigma = RBFKernel(X, X, sigma) + 1./beta * np.eye(X.shape[0])
-    mu = np.zeros(X.shape[0])
+    ## fill in this part ##
+    Sigma =
+    mu =
     return mvn.logpdf(y, mean=mu, cov=Sigma)
 
 def predict(X_train, y_train, sigma, beta, X_test):
     k = RBFKernel(X_test, X_train, sigma)
     iK = np.linalg.inv(RBFKernel(X_train, X_train, sigma) + 1./beta * np.eye(X_train.shape[0]))
-    mu = np.dot(np.dot(k, iK), y_train)
+    ## fill in this part ##
+    mu =
     k1 = np.diag(RBFKernel(X_test, X_test, sigma))
     sigma = k1 - np.diag(np.dot(np.dot(k, iK), k.T)) + 1./beta
     return mu, sigma
@@ -48,12 +50,11 @@ best_sigma, best_beta = 0, 0
 best_lm = -np.inf
 lms = []
 for sigma, beta in product(sigma_list, beta_list):
-    lm = log_marginal_likelihood(X_train, y_train, sigma, beta)
+    ## fill in this part ##
+    lm =
     lms.append(lm)
     if lm > best_lm:
-        best_lm = lm
-        best_sigma = sigma
-        best_beta = beta
+        ## fill in this part ##
 
 AB = np.array(list(product(sigma_list, beta_list)))
 plt.figure('sigma, beta vs log-marginal likelihood')
