@@ -8,7 +8,7 @@ from sklearn.datasets import make_blobs
 
 X, y = make_blobs(n_samples=40, centers=2, random_state=6)
 
-clf = SVC(kernel='linear', C=1000)
+clf = SVC(kernel='linear', C=0.001)
 clf.fit(X, y)
 
 plt.scatter(X[:,0], X[:,1], c=y, s=30, cmap=plt.cm.Paired)

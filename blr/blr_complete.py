@@ -57,7 +57,7 @@ print('best log-marginal likelihood: %.4f' % (best_lm))
 def predict(X_train, y_train, alpha, beta, X_test):
     m, S = posterior(X_train, y_train, alpha, beta)
     mu = np.dot(X_test, m)
-    sigma = np.sqrt(1./beta + ((X_test*np.dot(X_test, S))**2).sum(1))
+    sigma = np.sqrt(1./beta + ((X_test*np.dot(X_test, S))).sum(1))
     return mu, sigma
 
 plt.figure('prediction')

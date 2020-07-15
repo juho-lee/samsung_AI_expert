@@ -58,7 +58,7 @@ def predict(X_train, y_train, alpha, beta, X_test):
     m, S = posterior(X_train, y_train, alpha, beta)
     ## fill in this part ##
     mu =
-    sigma =
+    sigma = np.sqrt(1./beta + ((X_test*np.dot(X_test, S))).sum(1))
     return mu, sigma
 
 plt.figure('prediction')
